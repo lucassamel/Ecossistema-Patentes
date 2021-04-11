@@ -1,5 +1,5 @@
 <template>
-  <div class="padding">
+  <div class="tela">
     <div class="tamanho">
       <div>
         <b-navbar toggleable="lg" type="dark" variant="info">
@@ -21,14 +21,19 @@
         </b-navbar>
       </div>
 
-      <div class="cards">
-        <b-card title="Card title" sub-title="Card subtitle">
+      <div class="cards" >
+        <b-card
+          v-for="i in patentes"
+          :key="i.id"
+          :title="i.titulo"
+          sub-title="Card subtitle"
+          :id="i.id"
+        >
           <b-card-text>
-            Some quick example text to build on the <em>card title</em> and make
-            up the bulk of the card's content.
+            <em>{{ i.titulo }}</em>
           </b-card-text>
 
-          <b-card-text>A second paragraph of text in the card.</b-card-text>
+          <b-card-text>Teste</b-card-text>
 
           <a href="#" class="card-link">Card link</a>
           <b-link href="#" class="card-link">Another link</b-link>
@@ -39,27 +44,40 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import api from '@/services/api.js'
+
 
 export default {
   name: "nichoPatente",
-  components: {
+
+  data(){
+    return{
+      patentes:[]
+    }
   },
-  computed: mapGetters(["allItens"]),
-  created() {
-    this.getItens();
+  mounted(){
+    api.get('').then(response=> {
+      this.patentes = response.data;
+    })
   },
 
-  methods:{
-    ...mapActions(["getItens", "deleteIten"]),
+  // mounted(){
+  //   axios.get('https://localhost:44323/api/patentes')
+  //   .then((response)=>
+  //     this.patentes=response.data.data
+  //   ).catch(error => console.log(error))
+  //   },
+
+  components: {},
+  methods: {
 
     editar() {
-      this.$router.push({ name: 'editarIten' });
+      this.$router.push({ name: "editarIten" });
     },
     detalheIten() {
-      this.$router.push({ name: 'DetalheIten' });
-    }
-  }
+      this.$router.push({ name: "DetalheIten" });
+    },
+  },
 };
 </script>
 
@@ -74,5 +92,10 @@ export default {
 
 .tamanho {
   width: 80%;
+}
+
+.tela {
+  display: flex;
+  justify-content: center;
 }
 </style>

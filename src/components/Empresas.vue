@@ -12,8 +12,7 @@ export default {
 
 <style>
 .tamanho{
-  max-width: 100%;
+  width: 100%;
   background-color: darkgoldenrod;
-  margin: 0 auto;
 }
 </style>

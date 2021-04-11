@@ -1,7 +1,7 @@
 <template>
-  <div class="fullScreen" fluid>
+  <div class="fullScreen">
     
-      <Empresas />
+      <Empresas class="fullScreen" />
     
       <Materias />
 
