@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <Header />
 
     
@@ -25,5 +25,8 @@ export default {
 .tela {
   padding-right: 0px;
   padding-left: 0px;
+}
+.app{
+  font-family: Merriweat'Raleway',sans-serif;
 }
 </style>

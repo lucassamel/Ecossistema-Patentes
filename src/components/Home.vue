@@ -4,8 +4,6 @@
       <Empresas class="fullScreen" />
     
       <Materias />
-
-      <NichoPatente/>
     
   </div>
 </template>
@@ -13,7 +11,7 @@
 <script>
 import Empresas from "./Empresas";
 import Materias from "./Materiais";
-import NichoPatente from './NichoPatente';
+
 
 
 export default {
@@ -21,14 +19,13 @@ export default {
   components: {
     Empresas,
     Materias,
-    NichoPatente
   },
 };
 </script>
 
 <style>
 .fundo{
-  background-color: cornflowerblue;
+  background-color:#4285f4;
 }
 
 .fullScreen{

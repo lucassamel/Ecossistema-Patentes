@@ -1,9 +1,31 @@
 <template>
   <div class="tela">
     <div class="tamanho">
-      <div>
-        <b-navbar toggleable="lg" type="dark" variant="info">
+      <div class="menu">
+        <b-navbar toggleable="lg" type="dark" style="background-color:  #000000">
           <b-collapse id="nav-collapse" is-nav>
+            
+
+            <b-button-group >
+              <b-dropdown right text="Categorias" variant="dark">
+                <b-dropdown-item>Agropecuária</b-dropdown-item>
+                <b-dropdown-item>Saúde</b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-item>Informção e Comunicação</b-dropdown-item>
+                <b-dropdown-item>Serviços de utilidade pública</b-dropdown-item>
+                <b-dropdown-item>Instituições financeiras</b-dropdown-item>
+                <b-dropdown-item>Indústria extrativa mineral</b-dropdown-item>
+                <b-dropdown-item>Transporte</b-dropdown-item>
+                <b-dropdown-item>Construção</b-dropdown-item>
+                <b-dropdown-item>Atividade imobiliária</b-dropdown-item>
+              </b-dropdown>
+              
+            </b-button-group>
+
+            <b-navbar-nav>
+              <b-nav-item href="#" >Favoritos</b-nav-item>
+            </b-navbar-nav>
+
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
               <b-nav-form>
@@ -21,14 +43,21 @@
         </b-navbar>
       </div>
 
-      <div class="cards" >
-        <b-card
-          v-for="i in patentes"
-          :key="i.id"
-          :title="i.titulo"
-          sub-title="Card subtitle"
-          :id="i.id"
-        >
+      <div class="cards">
+        <b-card v-for="i in patentes" :key="i.id" :id="i.id" class="patent">
+          <a href="#" class="estrela">
+            <b-icon
+              icon="star"
+              variant="warning"
+              v-if="i.favorito == false"
+            ></b-icon>
+            <b-icon
+              icon="star-fill"
+              variant="warning"
+              v-if="i.favorito == true"
+            ></b-icon>
+          </a>
+          <b-card-title>{{ i.titulo }}</b-card-title>
           <b-card-text>
             <em>{{ i.titulo }}</em>
           </b-card-text>
@@ -44,33 +73,23 @@
 </template>
 
 <script>
-import api from '@/services/api.js'
-
+import api from "@/services/api.js";
 
 export default {
   name: "nichoPatente",
 
-  data(){
-    return{
-      patentes:[]
-    }
+  data() {
+    return {
+      patentes: [],
+    };
   },
-  mounted(){
-    api.get('').then(response=> {
+  mounted() {
+    api.get("").then((response) => {
       this.patentes = response.data;
-    })
+    });
   },
-
-  // mounted(){
-  //   axios.get('https://localhost:44323/api/patentes')
-  //   .then((response)=>
-  //     this.patentes=response.data.data
-  //   ).catch(error => console.log(error))
-  //   },
-
   components: {},
   methods: {
-
     editar() {
       this.$router.push({ name: "editarIten" });
     },
@@ -82,6 +101,9 @@ export default {
 </script>
 
 <style>
+.menu{
+  padding-top: 20px;
+}
 .cards {
   padding: 15px;
   background-color: white;
@@ -97,5 +119,13 @@ export default {
 .tela {
   display: flex;
   justify-content: center;
+}
+
+.patent {
+  margin-bottom: 10px;
+}
+
+.estrela {
+  float: right;
 }
 </style>
