@@ -8,10 +8,10 @@
     >
       <b-navbar-nav class="mx-auto">
         <b-nav-form>
-          <b-button pill variant="primary" size="lg" class="mr-3"
+          <b-button pill variant="primary" size="lg" class="mr-3" @click="video"
             >Vídeo Institucional</b-button
           >
-          <b-button pill variant="primary" size="lg"
+          <b-button pill variant="primary" size="lg" @click="sobre"
             >Tenho interesse em saber mais</b-button
           >
         </b-nav-form>
@@ -24,6 +24,14 @@
 export default {
   data: function() {
     return {};
+  },
+  methods: {
+      video(){
+          this.$router.push({name:"login"})
+      },
+      sobre(){
+          this.$router.push({name:"sobre"})
+      }
   },
 };
 </script>
