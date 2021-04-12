@@ -63,7 +63,7 @@ export default {};
 
 .fundo {
   background-color:#4285f4;
-  min-height: 86vh;
+  min-height: 56vh;
 }
 
 .faq {

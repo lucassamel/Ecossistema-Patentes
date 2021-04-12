@@ -2,28 +2,22 @@
   <div class="tela">
     <div class="tamanho">
       <div class="menu">
-        <b-navbar toggleable="lg" type="dark" style="background-color:  #000000">
+        <b-navbar
+          toggleable="lg"
+          type="dark"
+          style="background-color:  #000000"
+        >
           <b-collapse id="nav-collapse" is-nav>
-            
-
-            <b-button-group >
+            <b-button-group>
               <b-dropdown right text="Categorias" variant="dark">
-                <b-dropdown-item>Agropecuária</b-dropdown-item>
                 <b-dropdown-item>Saúde</b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
-                <b-dropdown-item>Informção e Comunicação</b-dropdown-item>
-                <b-dropdown-item>Serviços de utilidade pública</b-dropdown-item>
-                <b-dropdown-item>Instituições financeiras</b-dropdown-item>
-                <b-dropdown-item>Indústria extrativa mineral</b-dropdown-item>
-                <b-dropdown-item>Transporte</b-dropdown-item>
-                <b-dropdown-item>Construção</b-dropdown-item>
-                <b-dropdown-item>Atividade imobiliária</b-dropdown-item>
+                <b-dropdown-item>Agropecuária</b-dropdown-item>
               </b-dropdown>
-              
             </b-button-group>
 
             <b-navbar-nav>
-              <b-nav-item href="#" >Favoritos</b-nav-item>
+              <b-nav-item href="#">Favoritos</b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
@@ -59,12 +53,12 @@
           </a>
           <b-card-title>{{ i.titulo }}</b-card-title>
           <b-card-text>
-            <em>{{ i.titulo }}</em>
+            <em>Data Depósito: {{ i.dataDeposito }}</em> <br />
+            <em>Data Publicação: {{ i.dataPublicacao }}</em> <br />
           </b-card-text>
 
-          <b-card-text>Teste</b-card-text>
+          <b-card-text>Classificação IPC: {{ i.classificacaoIPC }}</b-card-text>
 
-          <a href="#" class="card-link">Card link</a>
           <b-link href="#" class="card-link">Another link</b-link>
         </b-card>
       </div>
@@ -101,7 +95,7 @@ export default {
 </script>
 
 <style>
-.menu{
+.menu {
   padding-top: 20px;
 }
 .cards {
